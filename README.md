@@ -24,16 +24,16 @@
 - **⚡️ Ultra-low Resource Usage**: Streaming architecture supports 100k+ row files with minimal memory footprint.
 - **📊 Transparent Audit**: Generates a detailed `Audit_Log` for every AI decision (split/delete/merge).
 
-## 🏗 Architecture
+##### 🏗 Architecture
 
 ```mermaid
 graph LR
-    A[Raw Excel (.xlsx)] --> B(Stream Reader)
-    B --> C{Table Detector}
-    C --> D[Raw Extraction]
-    D --> E(AI Refinement)
-    E --> F[Clean JSON/Excel]
-    E --> G[Audit Log]
+    A["Raw Excel (.xlsx)"] --> B("Stream Reader")
+    B --> C{"Table Detector"}
+    C --> D["Raw Extraction"]
+    D --> E("AI Refinement")
+    E --> F["Clean JSON/Excel"]
+    E --> G["Audit Log"]
 ```
 
 ## 🚀 Quick Start

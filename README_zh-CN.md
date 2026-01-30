@@ -26,12 +26,12 @@
 
 ```mermaid
 graph LR
-    A[Excel 原文件 (.xlsx)] --> B(流式读取器)
-    B --> C{表格边界检测}
-    C --> D[原始数据提取]
-    D --> E(AI 智能清洗)
-    E --> F[标准 JSON/Excel]
-    E --> G[审计日志]
+    A["Excel 原文件 (.xlsx)"] --> B("流式读取器")
+    B --> C{"表格边界检测"}
+    C --> D["原始数据提取"]
+    D --> E("AI 智能清洗")
+    E --> F["标准 JSON/Excel"]
+    E --> G["审计日志"]
 ```
 
 1.  **物理提取 (Extraction)**：
