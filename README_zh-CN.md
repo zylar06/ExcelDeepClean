@@ -29,7 +29,8 @@ graph LR
     A["Excel 原文件 (.xlsx)"] --> B("流式读取器")
     B --> C{"表格边界检测"}
     C --> D["原始数据提取"]
-    D --> E("AI 智能清洗")
+    D --> I[("中间态 JSON")]
+    I --> E("AI 智能清洗")
     E --> F["标准 JSON/Excel"]
     E --> G["审计日志"]
 ```
@@ -38,7 +39,9 @@ graph LR
     *   直接解析 XML 实现合并单元格的“读取即填充”。
     *   基于连通域算法自动检测表格边界。
     *   自动修剪全空列。
+    *   **输出**：包含原始表结构和数据的中间态 JSON 文件。
 2.  **智能清洗 (Refinement)**：
+    *   **输入**：读取上一步生成的 JSON 文件。
     *   **数据画像 (Data Profiling)**：生成列统计信息。
     *   **AI 决策 (AI Decision)**：调用 DeepSeek API 识别分节标题（Split）、噪声行（Delete）和冗余列（Merge）。
     *   **重组 (Reconstruction)**：重组数据并生成多 Sheet 的 Excel 报告。

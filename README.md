@@ -31,10 +31,22 @@ graph LR
     A["Raw Excel (.xlsx)"] --> B("Stream Reader")
     B --> C{"Table Detector"}
     C --> D["Raw Extraction"]
-    D --> E("AI Refinement")
+    D --> I[("Intermediate JSON")]
+    I --> E("AI Refinement")
     E --> F["Clean JSON/Excel"]
     E --> G["Audit Log"]
 ```
+
+1.  **Physical Extraction**:
+    *   Parses XML directly to handle merged cells (forward fill).
+    *   Detects table boundaries using connected components algorithm.
+    *   Trims empty columns automatically.
+    *   **Output**: An intermediate JSON file containing raw table structures.
+2.  **AI Refinement**:
+    *   **Input**: Reads the JSON file generated in the previous step.
+    *   **Data Profiling**: Generates column statistics.
+    *   **AI Decision**: Calls DeepSeek API to identify split headers, junk rows, and redundant columns.
+    *   **Reconstruction**: Reconstructs data into a multi-sheet Excel report.
 
 ## 🚀 Quick Start
 
