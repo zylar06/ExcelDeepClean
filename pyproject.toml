@@ -1,0 +1,28 @@
+[project]
+name = "excel-table-extractor"
+version = "0.1.0"
+description = "A high-performance tool to extract structured tables from complex Excel files."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "openpyxl>=3.1.2",
+    "pydantic>=2.7.0",
+    "numpy>=1.26.0",
+    "openai>=2.16.0",
+    "python-dotenv>=1.2.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --cov=src"
